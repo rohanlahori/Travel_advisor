@@ -3,30 +3,55 @@ import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
+import MenuItem from '@mui/material/MenuItem';
+import ListSubheader from '@mui/material/ListSubheader';
+import Select from '@mui/material/Select';
+import Grid from '@mui/material/Grid';
+import PlaceDetails from "../PlaceDetails/PlaceDetails"
 
 export default function NativeSelectDemo() {
+
+    const places=[
+        {name:'Madhuban Restaurant'},
+        {name : 'Radisson'},
+        {name:'Madhuban Restaurant'},
+        {name : 'Radisson'}, 
+        {name:'Madhuban Restaurant'},
+        {name : 'Radisson'},
+        
+    ]
   return (
     <Box sx={{ minWidth: 120 }}>
         <h1>
             Restaurant Hotel & Attraction around 
                 You.
         </h1>
-      <FormControl fullWidth>
-        <InputLabel variant="standard" htmlFor="uncontrolled-native">
-          Age
-        </InputLabel>
-        <NativeSelect
-          defaultValue={30}
-          inputProps={{
-            name: 'age',
-            id: 'uncontrolled-native',
-          }}
-        >
-          <option value={10}>Ten</option>
-          <option value={20}>Twenty</option>
-          <option value={30}>Thirty</option>
-        </NativeSelect>
+      <FormControl sx={{ m: 1, width: "40%" }}>
+        <InputLabel htmlFor="grouped-select">Type</InputLabel>
+        <Select defaultValue="" id="grouped-select" label="Grouping">
+          <MenuItem value={1}>Hotel</MenuItem>
+          <MenuItem value={2}>Restaurant</MenuItem>
+          <MenuItem value={3}>Attractions</MenuItem>  
+        </Select>
       </FormControl>
+      <FormControl sx={{ m: 1, width: "40%" }}>
+        <InputLabel htmlFor="grouped-select">Rating</InputLabel>
+        <Select defaultValue="" id="grouped-select" label="Grouping">
+          <MenuItem value={1}>Above 3</MenuItem>
+          <MenuItem value={2}>Above 4</MenuItem>
+          <MenuItem value={3}>Above 4.5</MenuItem>  
+        </Select>
+      </FormControl>
+
+
+      <Grid container spacing={3} className="classes.list">
+        {places?.map((place,i)=>
+        (
+            <Grid item key={i} xs={12}>
+                <PlaceDetails place={place}/>
+            </Grid>
+        ))}
+      </Grid>
     </Box>
   );
 }
