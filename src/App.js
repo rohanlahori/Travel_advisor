@@ -7,26 +7,23 @@ import {getPlacesData} from "./api/index"
 
 const App=()=>{
 
-    const [places,setplaces]=useState("");
+    const [places,setplaces]=useState([]);
 
-    const [coordinates,setCoordinates]=useState({lat:0 , lng: 0});
+    const [coordinates,setCoordinates]=useState({});
     const [bounds,setBounds]=useState(null);
-
-    console.log("Testing the page")
-
+    
     useEffect(()=>{
-        console.log() 
-        navigator.geolocation.getCurrentPosition(({coords:{latitude,longitude}}
-            )=>{
+        navigator.geolocation.getCurrentPosition
+        (({coords:{latitude,longitude}})=>{
                 setCoordinates({lat:latitude,lng:longitude})
             })
     },[]);
+
 
     useEffect(()=>{
         console.log(coordinates,bounds)
         getPlacesData()
             .then((data)=>{
-                console.log(data);
                 setplaces(data);
             })
     },[coordinates,bounds])
