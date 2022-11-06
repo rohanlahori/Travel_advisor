@@ -3,7 +3,8 @@ import GoogleMapReact from 'google-map-react';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-export default function SimpleMap(){
+export default function SimpleMap({setCoordinates,setBounds,coordinates})
+{
   const defaultProps = {
     center: {
       lat: 10.99835602,
@@ -19,6 +20,11 @@ export default function SimpleMap(){
         bootstrapURLKeys={{ key: "AIzaSyAO933zejDBYyzHmP3nA84qjaNSoyV7Y98" }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
+        onChange={(e)=>{
+          console.log(e)
+          setCoordinates({lat:e.center.lat, lng: e.center.lng})
+          setBounds({ne:e.marginBounds.ne, sw:e.marginBounds.sw})
+        }}
       >
         <AnyReactComponent
           lat={59.955413}

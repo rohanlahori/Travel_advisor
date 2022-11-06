@@ -1,3 +1,31 @@
 React Componenets:
 
     Functional and Class Componenets
+
+
+
+
+Hooks in React:
+React Hooks are simple JavaScript functions that we can use to isolate the 
+reusable part from a functional component. 
+
+
+use Effect in React:
+
+    https://reactjs.org/docs/hooks-effect.html
+
+
+
+
+use State in React :
+
+Continuously update the state of the application as the user interacts with the 
+application.
+
+
+The useState hook allows us to create state variables for our component. 
+State variables are used to store dynamic data in our component which can change 
+as a user interacts with it. One example of state would be the contents of a 
+form that the user is filling out. As they interact with the form fields, 
+the component is continuously 
+updating its state and re-rendering in order to keep the form data up to date.
