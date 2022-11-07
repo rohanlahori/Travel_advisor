@@ -8,23 +8,14 @@ import ListSubheader from '@mui/material/ListSubheader';
 import Select from '@mui/material/Select';
 import Grid from '@mui/material/Grid';
 import PlaceDetails from "../PlaceDetails/PlaceDetails"
+import './listt.css';
 
-export default function NativeSelectDemo() {
-
-    const places=[
-        {name:'Madhuban Restaurant'},
-        {name : 'Radisson'},
-        {name:'Madhuban Restaurant'},
-        {name : 'Radisson'}, 
-        {name:'Madhuban Restaurant'},
-        {name : 'Radisson'},
-        
-    ]
+export default function NativeSelectDemo({places}) {
   return (
+    <div>
     <Box sx={{ minWidth: 120 }}>
         <h1>
-            Restaurant Hotel & Attraction around 
-                You.
+            Restaurant Hotel & Attraction around You.
         </h1>
       <FormControl sx={{ m: 1, width: "40%" }}>
         <InputLabel htmlFor="grouped-select">Type</InputLabel>
@@ -42,9 +33,9 @@ export default function NativeSelectDemo() {
           <MenuItem value={3}>Above 4.5</MenuItem>  
         </Select>
       </FormControl>
-
-
-      <Grid container spacing={3} className="classes.list">
+      <br></br>
+      </Box>
+      <Grid style={{height: '500px', overflow:'auto'}} container spacing={3} >
         {places?.map((place,i)=>
         (
             <Grid item key={i} xs={12}>
@@ -52,6 +43,6 @@ export default function NativeSelectDemo() {
             </Grid>
         ))}
       </Grid>
-    </Box>
+    </div>
   );
 }

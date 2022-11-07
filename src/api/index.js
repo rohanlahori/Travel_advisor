@@ -7,7 +7,7 @@ const URL="https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng";
 
 const options = {
   params: {
-    latitude: '12.91285',
+    latitude: '12.91997',
     longitude: '100.87808',
     limit: '30',
     currency: 'USD',
@@ -25,11 +25,25 @@ const options = {
 
 
 
-export const getPlacesData=async () =>
+export const getPlacesData=async (coordinates) =>
 {
     try{
-        const {data: {data} } = await axios.get(URL,options);
-
+        const {data: {data} } = await axios.get(URL,
+          {
+            params: 
+            {
+              latitude: coordinates.lat,
+              longitude: coordinates.lng,
+              limit:100
+            },
+            headers: {
+              'X-RapidAPI-Key': '1fa02a47femsh4eae05d727c2d66p176746jsn8cb78b34a622',
+              'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
+            }
+            
+          }
+        );
+        console.log(data)
         return data;
     }
     catch(error)
