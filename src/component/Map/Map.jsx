@@ -1,10 +1,13 @@
 import React from "react";
 import GoogleMapReact from 'google-map-react';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import { Typography, useMediaQuery } from "@mui/material";
+import Paper from "@mui/material/Paper"
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
-export default function SimpleMap({setCoordinates,setBounds,coordinates})
+export default function SimpleMap({setCoordinates,setBounds,coordinates, places})
 {
+  const isDesktop =useMediaQuery(('min-width: 600px'))
   return (
   <div style={{ height: '100vh', width: '100%' }}>
     <GoogleMapReact
@@ -25,6 +28,8 @@ export default function SimpleMap({setCoordinates,setBounds,coordinates})
           lng={30.337844}
           text="My Marker"
         />
+
+
       </GoogleMapReact>
     </div>
   );

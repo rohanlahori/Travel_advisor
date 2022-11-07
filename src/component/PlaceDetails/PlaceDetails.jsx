@@ -27,16 +27,16 @@ const PlaceDetails=({place})=>{
                 </Typography>
                 <Box display="flex" justifyContent="space-between">
                     <Typography variant="subtitle1">Price</Typography>
-                    <Typography gutterButtom variant="subtitle1">{place.price || "Not known"}</Typography>
+                    <Typography gutterButtom variant="subtitle1">{place.price || "Not Available"}</Typography>
                 </Box>
                 <Box display="flex" justifyContent="space-between">
                     <Typography variant="subtitle1">Ranking</Typography>
-                    <Typography gutterButtom variant="subtitle1">{place.ranking}</Typography>
+                    <Typography gutterButtom variant="subtitle1">{place.ranking || "Not Available"}</Typography>
                 </Box>
 
                 <Box display="flex" justifyContent="space-between">
                 <Typography component="legend">Rating</Typography>
-                <Rating name="read-only" value={place.rating} readOnly />
+                <Rating name="read-only" value={place.rating || 0} readOnly />
                 </Box>
                 <Stack direction="row" spacing={1}>
                 {place.cuisine ? 
@@ -57,12 +57,16 @@ const PlaceDetails=({place})=>{
 
             <CardActions>
                 <Button size="small" color="primary" onClick=
-                {()=>window.open(place.web_url,'_blank')}>
-                    Trip Advisor
+                    {()=>window.open(place.web_url,'_blank')}>
+                        Trip Advisor
                 </Button>
                 <Button size="small" color="primary" onClick=
                 {()=>window.open(place.website,'_blank')}>
                     Website
+                </Button>
+                <Button size="small" color="primary" onClick=
+                {()=>window.open(place.write_review,'_blank')}>
+                    Give Review
                 </Button>
             </CardActions>
             </Card>
