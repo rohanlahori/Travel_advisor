@@ -5,13 +5,12 @@ import { Typography, useMediaQuery } from "@mui/material";
 import Paper from "@mui/material/Paper"
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
-export default function SimpleMap({setCoordinates,setBounds,coordinates, places})
+export default function SimpleMap({setCoordinates,setBounds,coordinates,bounds,places})
 {
-  const isDesktop =useMediaQuery(('min-width: 600px'))
-  return (
+  return ( 
   <div style={{ height: '100vh', width: '100%' }}>
     <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyAO933zejDBYyzHmP3nA84qjaNSoyV7Y98" }}
+        bootstrapURLKeys={{ key: "AIzaSyAO933zejDBYyzHmP3nA84qjaNSoyV7Y98"}}
         defaultCenter={coordinates}
         center={coordinates}
         defaultZoom={10}
@@ -39,3 +38,7 @@ export default function SimpleMap({setCoordinates,setBounds,coordinates, places}
 
 
 // bootstrapURLKeys={{key:'AIzaSyAO933zejDBYyzHmP3nA84qjaNSoyV7Y98'}}
+
+
+
+// bootstrapURLKeys={{ key: "AIzaSyDfANKR-y4jL9EupUNpl8Ip3PC6XDyL1BI" }}

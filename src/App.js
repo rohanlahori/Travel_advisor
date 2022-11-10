@@ -5,10 +5,11 @@ import List from "./component/List/List"
 import {CssBaseline,Grid} from '@mui/material';
 import {getPlacesData} from "./api/index"
 
+
 const App=()=>{
     const [places,setplaces]=useState([]);
     const [coordinates,setCoordinates]=useState({});
-    const [bounds,setBounds]=useState(null);
+    const [bounds,setBounds]=useState({});
 
     useEffect(()=>
     {
@@ -17,7 +18,6 @@ const App=()=>{
                 setCoordinates({lat:latitude,lng:longitude})
             })
     },[]);
-
     useEffect(()=>
     {
         console.log(coordinates)
@@ -53,3 +53,6 @@ const App=()=>{
 }
 
 export default App;
+
+
+//  Add Loader to the Website 

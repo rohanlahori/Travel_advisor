@@ -24,19 +24,19 @@ const options = {
 
 
 
-
+// console.log(process.env.REACT_RAPID_KEY)
 export const getPlacesData=async (coordinates) =>
 {
     try{
         const {data: {data} } = await axios.get(URL,
           {
-            params: 
-            {
+            params: {
               latitude: coordinates.lat,
               longitude: coordinates.lng,
-              limit:100
+              limit:'200'
             },
             headers: {
+              'X-RapidAPI-Key': "5c1a0b50c2mshade7b914ee9bae6p131721jsn1b3f5901a233",
               'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
             }
             

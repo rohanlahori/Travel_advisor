@@ -12,7 +12,7 @@ import './listt.css';
 
 export default function NativeSelectDemo({places}) {
   return (
-    <div>
+    <div >
     <Box sx={{ minWidth: 120 }}>
         <h1>
             Restaurant Hotel & Attraction around You.
