@@ -36,7 +36,6 @@ export const getPlacesData=async (coordinates) =>
               limit:'200'
             },
             headers: {
-              // 'X-RapidAPI-Key': "5c1a0b50c2mshade7b914ee9bae6p131721jsn1b3f5901a233",
               'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
             }
             

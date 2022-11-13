@@ -40,7 +40,7 @@ const PlaceDetails=({place})=>{
                 <p>Out of {place.num_reviews} reviews</p>
                 </Box>
                 <br></br>
-                <Stack direction="row" spacing={2}>
+                <Stack direction="row" spacing={2} maxWidth="80%">
                 {place.cuisine ? 
                     place.cuisine.map(({name})=>(
                         <Chip variant ="filled" label={name}></Chip>

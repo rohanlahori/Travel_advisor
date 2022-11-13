@@ -1,18 +1,29 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect,useState,CSSProperties} from "react";
 import Header  from "./component/Header/Header";
 import Map from "./component/Map/Map"
 import List from "./component/List/List"
 import {CssBaseline,Grid} from '@mui/material';
 import {getPlacesData} from "./api/index"
 import ClipLoader from "react-spinners/ClipLoader";
+import CircleLoader from "react-spinners/CircleLoader";
+import BeatLoader from "react-spinners/BeatLoader";
 
+const override: CSSProperties = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "black",
+    position:"fixed",
+    left:"50%",
+    top:"50%"
+  };
+  
 
 const App=()=>{
     const [places,setplaces]=useState([]);
     const [coordinates,setCoordinates]=useState({});
     const [bounds,setBounds]=useState({});
     const [loading,setLoading]=useState(false)
-    let [color, setColor] = useState("#ffffff");
+    let [color, setColor] = useState("#000000");
 
 
     useEffect(()=>{
@@ -45,12 +56,14 @@ const App=()=>{
         <>
         {
             loading?
-            <ClipLoader
+            <BeatLoader
                 color={"#123abc"}
+                size={20}
                 loading={loading}
-                size={30}
                 aria-label="Loading Spinner"
                 data-testid="loader"
+                align="center"
+                cssOverride={override}
             />
             :
             <Grid container spacing={4} style={{width:'100%'}}>
