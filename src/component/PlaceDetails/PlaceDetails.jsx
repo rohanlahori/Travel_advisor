@@ -35,15 +35,19 @@ const PlaceDetails=({place})=>{
                 </Box>
 
                 <Box display="flex" justifyContent="space-between">
-                <Typography component="legend">Rating</Typography>
+                <Typography component="legend">Rating : </Typography>
                 <Rating name="read-only" value={place.rating || 0} readOnly />
+                <p>Out of {place.num_reviews} reviews</p>
                 </Box>
-                <Stack direction="row" spacing={1}>
+                <br></br>
+                <Stack direction="row" spacing={2}>
                 {place.cuisine ? 
-                place.cuisine.map(({name})=>(
-                    <Chip variant ="filled" label={name}></Chip>
-                )
-                ) : ""} 
+                    place.cuisine.map(({name})=>(
+                        <Chip variant ="filled" label={name}></Chip>
+                    )
+                    ) : 
+                    ""
+                } 
                 </Stack>
                 <br></br>
                 <Typography variant="subtitle1">Address :    

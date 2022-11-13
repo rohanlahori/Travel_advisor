@@ -8,12 +8,12 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 export default function SimpleMap({setCoordinates,setBounds,coordinates,bounds,places})
 {
   return ( 
-  <div style={{ height: '100vh', width: '100%' }}>
+  <div style={{ height: '100%', width: '100%' }}>
     <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyAO933zejDBYyzHmP3nA84qjaNSoyV7Y98"}}
         defaultCenter={coordinates}
         center={coordinates}
-        defaultZoom={10}
+        defaultZoom={12}
         margin={[50,50,50,50]}
         
         onChange={(e)=>{

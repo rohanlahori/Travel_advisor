@@ -4,13 +4,24 @@ import Map from "./component/Map/Map"
 import List from "./component/List/List"
 import {CssBaseline,Grid} from '@mui/material';
 import {getPlacesData} from "./api/index"
+import ClipLoader from "react-spinners/ClipLoader";
 
 
 const App=()=>{
     const [places,setplaces]=useState([]);
     const [coordinates,setCoordinates]=useState({});
     const [bounds,setBounds]=useState({});
+    const [loading,setLoading]=useState(false)
+    let [color, setColor] = useState("#ffffff");
 
+
+    useEffect(()=>{
+        setLoading(true);
+        setTimeout(()=>{
+            setLoading(false)
+        },8000)
+    },[])
+    // console.log(document.readyState());
     useEffect(()=>
     {
         navigator.geolocation.getCurrentPosition
@@ -32,8 +43,16 @@ const App=()=>{
 
     return(
         <>
-            <CssBaseline/>
-            <Header/>
+        {
+            loading?
+            <ClipLoader
+                color={"#123abc"}
+                loading={loading}
+                size={30}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
+            :
             <Grid container spacing={4} style={{width:'100%'}}>
             <Grid item xs={12} md={4}>
                 <List places={places}/>
@@ -47,7 +66,8 @@ const App=()=>{
                 places={places}
                 />
             </Grid>
-            </Grid>  
+            </Grid> 
+        } 
         </>
     );
 }
