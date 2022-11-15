@@ -1,8 +1,8 @@
 import axios from "axios";
 
 
-const URL="https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng";
-
+const RESTAURANT_URL="https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng";
+const HOTEL_URL="'https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng'";
 
 
 const options = {
@@ -17,7 +17,6 @@ const options = {
     lang: 'en_US'
   },
   headers: {
-    'X-RapidAPI-Key': "1f5c63a02amsh0d34597e1c98369p1e823djsn4a00110e41c9",
     'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
   }
 };
@@ -25,17 +24,23 @@ const options = {
 
 
 // console.log(process.env.REACT_RAPID_KEY)
-export const getPlacesData=async (coordinates) =>
+export const getPlacesData=async (coordinates,type) =>
 {
+
+  const cur_url=`https://travel-advisor.p.rapidapi.com/${type}/list-by-latlng`;
+  console.log(cur_url)
     try{
-        const {data: {data} } = await axios.get(URL,
+        console.log(cur_url)
+        const {data: {data} } = await axios.get(cur_url,
           {
-            params: {
+            params: 
+            {
               latitude: coordinates.lat,
               longitude: coordinates.lng,
               limit:'200'
             },
-            headers: {
+            headers: 
+            {
               'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
             }
             
@@ -49,4 +54,3 @@ export const getPlacesData=async (coordinates) =>
         console.log(error);
     }
 }
-

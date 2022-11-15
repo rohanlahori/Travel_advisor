@@ -35,9 +35,3 @@ export default function SimpleMap({setCoordinates,setBounds,coordinates,bounds,p
 
 
 
-
-// bootstrapURLKeys={{key:'AIzaSyAO933zejDBYyzHmP3nA84qjaNSoyV7Y98'}}
-
-
-
-// bootstrapURLKeys={{ key: "AIzaSyDfANKR-y4jL9EupUNpl8Ip3PC6XDyL1BI" }}

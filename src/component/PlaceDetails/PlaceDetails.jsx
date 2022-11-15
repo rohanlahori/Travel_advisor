@@ -30,7 +30,7 @@ const PlaceDetails=({place})=>{
                     <Typography gutterButtom variant="subtitle1">{place.price || "Not Available"}</Typography>
                 </Box>
                 <Box display="flex" justifyContent="space-between">
-                    <Typography variant="subtitle1">Ranking</Typography>
+                    <Typography variant="subtitle1">Ranking :  </Typography>
                     <Typography gutterButtom variant="subtitle1">{place.ranking || "Not Available"}</Typography>
                 </Box>
 

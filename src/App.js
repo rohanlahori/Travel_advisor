@@ -23,6 +23,7 @@ const App=()=>{
     const [coordinates,setCoordinates]=useState({});
     const [bounds,setBounds]=useState({});
     const [loading,setLoading]=useState(false)
+    const [type,setType]=useState("hotels")
     let [color, setColor] = useState("#000000");
 
 
@@ -44,11 +45,11 @@ const App=()=>{
     {
         console.log(coordinates)
         console.log(bounds)
-        getPlacesData(coordinates)
+        getPlacesData(coordinates,type)
             .then((data)=>{
                 setplaces(data);
             })
-    },[coordinates,bounds])
+    },[coordinates,bounds,type])
 
 
 
@@ -89,3 +90,5 @@ export default App;
 
 
 //  Add Loader to the Website 
+//  add search for cities 
+//  add filter options on ratings

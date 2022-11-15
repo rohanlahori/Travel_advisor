@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState,useEffect} from 'react'
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
@@ -9,12 +10,10 @@ import Select from '@mui/material/Select';
 import Grid from '@mui/material/Grid';
 import PlaceDetails from "../PlaceDetails/PlaceDetails"
 import './listt.css';
+import { getPlacesData } from '../../api';
 
 export default function NativeSelectDemo({places}) {
-
-  const findhotel=()=>{
-    console.log("Hotels")
-  }
+  
   return (
     <div >
     <Box sx={{ minWidth: 120 }}>
@@ -24,7 +23,7 @@ export default function NativeSelectDemo({places}) {
       <FormControl sx={{ m: 1, width: "40%" }}>
         <InputLabel htmlFor="grouped-select">Type</InputLabel>
         <Select defaultValue="" id="grouped-select" label="Grouping">
-          <MenuItem value={1} onClick={()=>findhotel()}>Hotel</MenuItem>
+          <MenuItem value={1}>Hotel </MenuItem>
           <MenuItem value={2}>Restaurant</MenuItem>
           <MenuItem value={3}>Attractions</MenuItem>  
         </Select>
