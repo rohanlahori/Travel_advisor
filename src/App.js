@@ -33,7 +33,7 @@ const App=()=>{
             setLoading(false)
         },8000)
     },[])
-    // console.log(document.readyState());
+
     useEffect(()=>
     {
         navigator.geolocation.getCurrentPosition
@@ -41,13 +41,14 @@ const App=()=>{
                 setCoordinates({lat:latitude,lng:longitude})
             })
     },[]);
+
     useEffect(()=>
     {
-        console.log(coordinates)
-        console.log(bounds)
         getPlacesData(coordinates,type)
-            .then((data)=>{
+            .then((data)=>
+            {
                 setplaces(data);
+                console.log(places)
             })
     },[coordinates,bounds,type])
 
@@ -68,18 +69,20 @@ const App=()=>{
             />
             :
             <Grid container spacing={4} style={{width:'100%'}}>
-            <Grid item xs={12} md={4}>
-                <List places={places}/>
-            </Grid>
+                 <Grid item xs={12} sm={6} md={4} lg={4}>
+                    <List places={places}/>
+                </Grid>
 
-            <Grid item xs={12} md={8}>
-                <Map
-                setCoordinates={setCoordinates}
-                setBounds={setBounds}
-                coordinates={coordinates}
-                places={places}
-                />
-            </Grid>
+                <Grid item xs={12} sm={6} md={8} lg={8}>
+                    <Map
+                        setCoordinates={setCoordinates}
+                        setBounds={setBounds}
+                        coordinates={coordinates}
+                        places={places}
+                    />
+                </Grid>
+
+                
             </Grid> 
         } 
         </>
@@ -92,3 +95,16 @@ export default App;
 //  Add Loader to the Website 
 //  add search for cities 
 //  add filter options on ratings
+// add loader for the page 
+// add blank if there is no  website in the link    
+// Search Provide for the city 
+
+
+//  work on the street view of the application
+
+
+
+// Task divison:
+    // 1: onClick function
+    // 2  Api Data Testing
+    // 3 Search Function

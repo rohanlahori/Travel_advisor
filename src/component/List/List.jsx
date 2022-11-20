@@ -12,11 +12,11 @@ import PlaceDetails from "../PlaceDetails/PlaceDetails"
 import './listt.css';
 import { getPlacesData } from '../../api';
 
-export default function NativeSelectDemo({places}) {
-  
+export default function NativeSelectDemo({places}) 
+{
   return (
     <div >
-    <Box sx={{ minWidth: 120 }}>
+    <Box sx={{ minWidth: 200 }}>
         <h1>
             Restaurant Hotel & Attraction around You.
         </h1>
