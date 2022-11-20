@@ -7,6 +7,8 @@ import {getPlacesData} from "./api/index"
 import ClipLoader from "react-spinners/ClipLoader";
 import CircleLoader from "react-spinners/CircleLoader";
 import BeatLoader from "react-spinners/BeatLoader";
+import { Update } from "@mui/icons-material";
+
 
 const override: CSSProperties = {
     display: "block",
@@ -15,18 +17,16 @@ const override: CSSProperties = {
     position:"fixed",
     left:"50%",
     top:"50%"
-  };
-  
+};
 
 const App=()=>{
     const [places,setplaces]=useState([]);
     const [coordinates,setCoordinates]=useState({});
     const [bounds,setBounds]=useState({});
     const [loading,setLoading]=useState(false)
-    const [type,setType]=useState("hotels")
     let [color, setColor] = useState("#000000");
-
-
+    const [type,setType]=useState("hotels")
+    
     useEffect(()=>{
         setLoading(true);
         setTimeout(()=>{
@@ -48,12 +48,10 @@ const App=()=>{
             .then((data)=>
             {
                 setplaces(data);
-                console.log(places)
             })
     },[coordinates,bounds,type])
 
-
-
+   
     return(
         <>
         {
@@ -70,7 +68,7 @@ const App=()=>{
             :
             <Grid container spacing={4} style={{width:'100%'}}>
                  <Grid item xs={12} sm={6} md={4} lg={4}>
-                    <List places={places}/>
+                    <List places={places} setType={setType}/>
                 </Grid>
 
                 <Grid item xs={12} sm={6} md={8} lg={8}>
@@ -89,6 +87,8 @@ const App=()=>{
     );
 }
 
+
+
 export default App;
 
 
@@ -105,6 +105,6 @@ export default App;
 
 
 // Task divison:
-    // 1: onClick function
-    // 2  Api Data Testing
+    // 1: onClick function doone right
+    // 2  Api Data Testing 
     // 3 Search Function

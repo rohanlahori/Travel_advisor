@@ -11,9 +11,11 @@ import Grid from '@mui/material/Grid';
 import PlaceDetails from "../PlaceDetails/PlaceDetails"
 import './listt.css';
 import { getPlacesData } from '../../api';
+import {Change} from '../../App'
 
-export default function NativeSelectDemo({places}) 
+export default function NativeSelectDemo({places,setType}) 
 {
+  const selceted_rating=3;
   return (
     <div >
     <Box sx={{ minWidth: 200 }}>
@@ -23,9 +25,9 @@ export default function NativeSelectDemo({places})
       <FormControl sx={{ m: 1, width: "40%" }}>
         <InputLabel htmlFor="grouped-select">Type</InputLabel>
         <Select defaultValue="" id="grouped-select" label="Grouping">
-          <MenuItem value={1}>Hotel </MenuItem>
-          <MenuItem value={2}>Restaurant</MenuItem>
-          <MenuItem value={3}>Attractions</MenuItem>  
+          <MenuItem value={1} onClick={event=>setType("hotels")}>Hotels</MenuItem>
+          <MenuItem value={2} onClick={event=>setType("restaurants")}>Restaurant</MenuItem>
+          <MenuItem value={3} onClick={event=>setType("attractions")}>Attractions</MenuItem>  
         </Select>
       </FormControl>
       <FormControl sx={{ m: 1, width: "40%" }}>
@@ -43,9 +45,11 @@ export default function NativeSelectDemo({places})
       <Grid style={{height: '500px', overflow:'auto'}} container spacing={3} >
         {places?.map((place,i)=>
         (
-            <Grid item key={i} xs={12}>
-                <PlaceDetails place={place}/>
-            </Grid>
+          
+          
+              <Grid item key={i} xs={12}>
+                  <PlaceDetails place={place}/>
+              </Grid>
         ))}
       </Grid>
     </div>
