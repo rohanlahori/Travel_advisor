@@ -12,8 +12,9 @@ import PlaceDetails from "../PlaceDetails/PlaceDetails"
 import './listt.css';
 import { getPlacesData } from '../../api';
 import {Change} from '../../App'
+import { BeatLoader } from 'react-spinners';
 
-export default function NativeSelectDemo({places,setType}) 
+export default function NativeSelectDemo({places,setType,loading,setRating}) 
 {
   const selceted_rating=3;
   return (
@@ -22,22 +23,29 @@ export default function NativeSelectDemo({places,setType})
         <h1>
             Restaurant Hotel & Attraction around You.
         </h1>
-      <FormControl sx={{ m: 1, width: "40%" }}>
-        <InputLabel htmlFor="grouped-select">Type</InputLabel>
-        <Select defaultValue="" id="grouped-select" label="Grouping">
-          <MenuItem value={1} onClick={event=>setType("hotels")}>Hotels</MenuItem>
-          <MenuItem value={2} onClick={event=>setType("restaurants")}>Restaurant</MenuItem>
-          <MenuItem value={3} onClick={event=>setType("attractions")}>Attractions</MenuItem>  
-        </Select>
-      </FormControl>
-      <FormControl sx={{ m: 1, width: "40%" }}>
-        <InputLabel htmlFor="grouped-select">Rating</InputLabel>
-        <Select defaultValue="" id="grouped-select" label="Grouping">
-          <MenuItem value={1}>Above 3</MenuItem>
-          <MenuItem value={2}>Above 4</MenuItem>
-          <MenuItem value={3}>Above 4.5</MenuItem>  
-        </Select>
-      </FormControl>
+
+        {loading?
+        <BeatLoader/>
+        :
+        <div>
+          <FormControl sx={{ m: 1, width: "40%" }}>
+            <InputLabel htmlFor="grouped-select">Type</InputLabel>
+            <Select defaultValue="" id="grouped-select" label="Grouping">
+              <MenuItem value={1} onClick={event=>setType("hotels")}>Hotels</MenuItem>
+              <MenuItem value={2} onClick={event=>setType("restaurants")}>Restaurant</MenuItem>
+              <MenuItem value={3} onClick={event=>setType("attractions")}>Attractions</MenuItem>  
+            </Select>
+          </FormControl>
+          <FormControl sx={{ m: 1, width: "40%" }}>
+            <InputLabel htmlFor="grouped-select">Rating</InputLabel>
+            <Select defaultValue="" id="grouped-select" label="Grouping">
+              <MenuItem value={1} onClick={event=>setRating(3)}>Above 3</MenuItem>
+              <MenuItem value={2} onClick={event=>setRating(4)}>Above 4</MenuItem>
+              <MenuItem value={3}onClick={event=>setRating(4.5)}>Above 4.5</MenuItem>  
+            </Select>
+          </FormControl>
+        </div>
+        }
       <br></br>
       <br></br>
       <br></br>
@@ -45,8 +53,7 @@ export default function NativeSelectDemo({places,setType})
       <Grid style={{height: '500px', overflow:'auto'}} container spacing={3} >
         {places?.map((place,i)=>
         (
-          
-          
+        
               <Grid item key={i} xs={12}>
                   <PlaceDetails place={place}/>
               </Grid>

@@ -8,7 +8,7 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 export default function SimpleMap({setCoordinates,setBounds,coordinates,bounds,places})
 {
   return ( 
-  <div style={{ height: '700px' , width:'100%' }}>
+  <div style={{ height: '750px' , width:'100%' }}>
     <GoogleMapReact
         defaultCenter={coordinates}
         center={coordinates}
@@ -32,5 +32,6 @@ export default function SimpleMap({setCoordinates,setBounds,coordinates,bounds,p
     </div>
   );
 }
+
 
 

@@ -26,11 +26,14 @@ const App=()=>{
     const [loading,setLoading]=useState(false)
     let [color, setColor] = useState("#000000");
     const [type,setType]=useState("hotels")
-    
+    const [rating,setRating]=useState()
+    const [filteredPlaces,setFileteredPlaces]=useState([])
+
     useEffect(()=>{
         setLoading(true);
         setTimeout(()=>{
             setLoading(false)
+            setFileteredPlaces([])
         },8000)
     },[])
 
@@ -48,9 +51,15 @@ const App=()=>{
             .then((data)=>
             {
                 setplaces(data);
+                setFileteredPlaces([])
             })
-    },[coordinates,bounds,type])
+    },[coordinates,bounds,type,rating])
 
+    useEffect(()=>
+    {
+        const filtered_places=places.filter((place)=>place.rating>rating)
+        setFileteredPlaces(filtered_places)
+    },[rating])
    
     return(
         <>
@@ -68,7 +77,12 @@ const App=()=>{
             :
             <Grid container spacing={4} style={{width:'100%'}}>
                  <Grid item xs={12} sm={6} md={4} lg={4}>
-                    <List places={places} setType={setType}/>
+                    <List 
+                    places={filteredPlaces.length? filteredPlaces :places} 
+                    setType={setType}
+                    loading={loading}
+                    setRating={setRating}
+                    />
                 </Grid>
 
                 <Grid item xs={12} sm={6} md={8} lg={8}>
@@ -76,7 +90,7 @@ const App=()=>{
                         setCoordinates={setCoordinates}
                         setBounds={setBounds}
                         coordinates={coordinates}
-                        places={places}
+                        places={filteredPlaces.length? filteredPlaces :places}
                     />
                 </Grid>
 
