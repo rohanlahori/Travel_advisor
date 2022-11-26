@@ -6,8 +6,6 @@ const HOTEL_URL="'https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng'";
 
 
 
-
-
 // console.log(process.env.REACT_RAPID_KEY)
 export const getPlacesData=async (coordinates,type) =>
 {
@@ -26,7 +24,7 @@ export const getPlacesData=async (coordinates,type) =>
             },
             headers: 
             {
-              'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
+              
             }
             
           }

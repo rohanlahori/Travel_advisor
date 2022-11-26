@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -8,6 +9,8 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -51,20 +54,38 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar() {
+
+
+export default function SearchAppBar({setCoordinates}) {
+
+  const top100Films = [
+    { label: 'The Shawshank Redemption', year: 1994 }
+  ]
+  const [autocomplete,setAutoComplete]=useState(null);
+
+  const onLoad=(autoC)=>{
+    console.log(autocomplete)
+    setAutoComplete(autoC)
+  }
+
+  const onPlaceChanged=()=>{
+    const lat=autocomplete.getPlace().geometry.location.lat();
+    const lng=autocomplete.getPlace().geometry.location.lng();
+    setCoordinates({lat,lng})
+    console.log({lat,lng})
+  }
+
+  const places_data=()=>
+  {
+    const lat=autocomplete.getPlace().geometry.location.lat();
+    const lng=autocomplete.getPlace().geometry.location.lng();
+    setCoordinates({lat,lng})
+    console.log({lat,lng})
+  }
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box>
+      <AppBar position="top">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography
             variant="h6"
             noWrap
@@ -72,18 +93,11 @@ export default function SearchAppBar() {
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
             Travel Advisor
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+          </Typography>     
         </Toolbar>
       </AppBar>
     </Box>
   );
 }
+
+

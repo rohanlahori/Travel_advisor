@@ -16,7 +16,6 @@ import { BeatLoader } from 'react-spinners';
 
 export default function NativeSelectDemo({places,setType,loading,setRating}) 
 {
-  const selceted_rating=3;
   return (
     <div >
     <Box sx={{ minWidth: 200 }}>

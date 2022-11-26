@@ -35,3 +35,4 @@ export default function SimpleMap({setCoordinates,setBounds,coordinates,bounds,p
 
 
 
+

@@ -57,7 +57,8 @@ const App=()=>{
 
     useEffect(()=>
     {
-        const filtered_places=places.filter((place)=>place.rating>rating)
+        console.log(rating);
+        const filtered_places=places.filter((place)=>Math.floor(place.rating)>rating)
         setFileteredPlaces(filtered_places)
     },[rating])
    
@@ -71,10 +72,13 @@ const App=()=>{
                 loading={loading}
                 aria-label="Loading Spinner"
                 data-testid="loader"
-                align="center"
+                alignItems='center' 
+                justifyContent='center'
                 cssOverride={override}
             />
             :
+            <div>
+            <Header setCoordinates={setCoordinates}/>
             <Grid container spacing={4} style={{width:'100%'}}>
                  <Grid item xs={12} sm={6} md={4} lg={4}>
                     <List 
@@ -96,6 +100,7 @@ const App=()=>{
 
                 
             </Grid> 
+            </div>
         } 
         </>
     );
@@ -119,6 +124,5 @@ export default App;
 
 
 // Task divison:
-    // 1: onClick function doone right
     // 2  Api Data Testing 
     // 3 Search Function
