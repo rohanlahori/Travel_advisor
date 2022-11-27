@@ -10,6 +10,7 @@ export default function SimpleMap({setCoordinates,setBounds,coordinates,bounds,p
   return ( 
   <div style={{ height: '750px' , width:'100%' }}>
     <GoogleMapReact
+        bootstrapURLKeys={{ key: process.env.REACT_MAP_KEY}}
         defaultCenter={coordinates}
         center={coordinates}
         defaultZoom={12}
@@ -32,7 +33,5 @@ export default function SimpleMap({setCoordinates,setBounds,coordinates,bounds,p
     </div>
   );
 }
-
-
 
 

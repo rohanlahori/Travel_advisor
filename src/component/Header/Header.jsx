@@ -37,6 +37,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   justifyContent: 'center',
 }));
 
+
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
@@ -61,19 +62,10 @@ export default function SearchAppBar({setCoordinates}) {
   const top100Films = [
     { label: 'The Shawshank Redemption', year: 1994 }
   ]
+
   const [autocomplete,setAutoComplete]=useState(null);
 
-  const onLoad=(autoC)=>{
-    console.log(autocomplete)
-    setAutoComplete(autoC)
-  }
-
-  const onPlaceChanged=()=>{
-    const lat=autocomplete.getPlace().geometry.location.lat();
-    const lng=autocomplete.getPlace().geometry.location.lng();
-    setCoordinates({lat,lng})
-    console.log({lat,lng})
-  }
+  
 
   const places_data=()=>
   {
@@ -93,7 +85,7 @@ export default function SearchAppBar({setCoordinates}) {
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
             Travel Advisor
-          </Typography>     
+          </Typography>
         </Toolbar>
       </AppBar>
     </Box>
